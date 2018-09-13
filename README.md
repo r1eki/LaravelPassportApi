@@ -25,7 +25,7 @@
 - localhost:8000/api/register  : di gunakan untuk buat API Register kedalam database
 - localhost:8000/api/details   : di gunakan untuk melihat detail user 
 - localhost:8000/api/logout    : di gunakan untuk buat API logout
-- localhost/8000/api/transaksi : di gunakan untuk menghitung pinjaman.
+- localhost:8000/api/transaksi : di gunakan untuk menghitung pinjaman
 
 ## Documentasi dan jenit tipe API 
 
