@@ -59,7 +59,8 @@ class UserController extends Controller
          $validator = Validator::make($request->all(), [
             'pinjaman' => 'required',
             'bunga'   => 'required',
-            'jumlah_angsuran' => 'required',
+            'jumlah_angsuran',
+            'angsuran_pokok',         
         ]);
         
         if ($validator->fails()) {
@@ -68,13 +69,11 @@ class UserController extends Controller
         
         $data = Transaksi::Cost([
             'pinjaman'          => $request->input('pinjaman');
-            'bunga'             => $request->input('bunga');
-            'jumlah_angsuran'   => $request->input('jumlah_angsuran');
+            'bunga'             => Input::get('bunga'); / 100 * Input::get('pinjaman');
+            'jumlah_angsuran'   => $request->input('angsuran_pokok'); + $request->input('bunga');
+            'angsuran_pokok'    => Input::get('pinjaman'); / Input::get('angsuran');
+            
         ])->get();
-        
-        $data['angsuran_pokok']      = Input::get('pinjaman')/Input::get('angsuran');
-	    $data['bunga']               = Input::get('bunga') / 100 * Input::get('pinjaman');
-        $data['jumlah_angsuran']     = $request->input('angsuran_pokok') + $request->input('bunga');
         
         return response()->json(['success' => $data], $this->successStatus);
     }
