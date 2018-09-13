@@ -56,7 +56,6 @@ class UserController extends Controller
     }
     
     public function transaksi(){
-         public function transaksi(){
          $validator = Validator::make($request->all(), [
             'pinjaman' => 'required',
             'bunga'   => 'required',
@@ -66,8 +65,18 @@ class UserController extends Controller
         if ($validator->fails()) {
             return response()->json(['error'=>$validator->errors()], 401);            
         }
-        // Function 
         
+        $data = Transaksi::Cost([
+            'pinjaman'          => $request->input('pinjaman');
+            'bunga'             => $request->input('bunga');
+            'jumlah_angsuran'   => $request->input('jumlah_angsuran');
+        ])->get();
+        
+        $data['angsuran_pokok']      = Input::get('pinjaman')/Input::get('angsuran');
+	    $data['bunga']               = Input::get('bunga') / 100 * Input::get('pinjaman');
+        $data['jumlah_angsuran']     = $request->input('angsuran_pokok') + $request->input('bunga');
+        
+        return response()->json(['success' => $data], $this->successStatus);
     }
     
     public function logout(Request $request) {
