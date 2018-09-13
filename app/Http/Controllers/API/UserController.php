@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\API;
 
+use Lcobucci\JWT\Parser;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Validator;
+use DB;
 
 class UserController extends Controller
 {
@@ -53,10 +55,21 @@ class UserController extends Controller
         return response()->json(['success' => $user], $this->successStatus);
     }
     
-    public function logout(){
-        $user = Auth::logout();
-        $token= $request->user()->tokens->find($token);
-        $token->revoke();
-        return response()->json(['success' => $token], $this->successStatus);
+    public function transaksi(){
+        //Is code
     }
+    
+    public function logout(Request $request) {
+    $value = $request->bearerToken();
+    if ($value) {
+ 
+        $id = (new Parser())->parse($value)->getHeader('jti');
+        $revoked = DB::table('oauth_access_tokens')->where('id', '=', $id)->update(['revoked' => 1]);
+        $this->guard()->logout();
+    }
+    Auth::logout();
+    return Response(['code' => 200, 'message' => 'You are successfully logged out'], 200);
+    }
+    
+    
 }
