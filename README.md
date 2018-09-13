@@ -10,7 +10,7 @@
 ## Jalankan Server 
 - php artisan serve
 
-## Menjalankan API dengan method POST & GET pada Postman dengan akses url di bawah ini
+## Menjalankan API dengan method POST & GET pada Postman dengan akses url di bawah ini :
 
 - localhost:8000/api/login     : di gunakan untuk buat API Login
 - localhost:8000/api/register  : di gunakan untuk buat API Register kedalam database
