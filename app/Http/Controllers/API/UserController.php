@@ -56,7 +56,18 @@ class UserController extends Controller
     }
     
     public function transaksi(){
-        //Is code
+         public function transaksi(){
+         $validator = Validator::make($request->all(), [
+            'pinjaman' => 'required',
+            'bunga'   => 'required',
+            'jumlah_angsuran' => 'required',
+        ]);
+        
+        if ($validator->fails()) {
+            return response()->json(['error'=>$validator->errors()], 401);            
+        }
+        // Function 
+        
     }
     
     public function logout(Request $request) {
