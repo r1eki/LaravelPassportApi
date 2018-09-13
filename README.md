@@ -56,7 +56,7 @@ Use Postman to test:
 
 # Logout
 
-- API Endpoint: http://domain/api/logout
+- API Endpoint: http://localhost:8000/api/logout
 - HTTP Method: POST
 Headers:
 - Accept: application/json
