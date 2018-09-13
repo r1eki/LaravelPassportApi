@@ -3,6 +3,10 @@
 ## Update Composer
 - composer update
 
+## Setting & Konfigurasi Database
+- seting pada .env untuk dbhost , dbuser , dbname , dbpassword 
+- php artisan migrate
+
 ## Jalankan Server 
 - php artisan serve
 
