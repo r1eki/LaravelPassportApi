@@ -29,6 +29,65 @@
 
 ## Documentasi dan jenit tipe API 
 
+Test
+Use Postman to test:
+
+# Register
+
+- API Endpoint: http://localhost:8000/api/register
+- HTTP Method: POST
+- Headers: Accept: application/json
+## Body :
+- name [your-name]
+- hp [your-number phone]
+- email [your-email]
+- password [your-password]
+- c_password [your-password same with password field]
+- Response: You should receive your details
+
+# Login
+- API Endpoint: http://localhost:8000/api/login
+- HTTP Method: POST
+- Headers: Accept: application/json
+## Body :
+- email [your-login]
+- password [your-password]
+- Response: You should receive your details
+
+# Logout
+
+- API Endpoint: http://domain/api/logout
+- HTTP Method: POST
+Headers:
+- Accept: application/json
+- Authorization: Bearer [login-token]
+
+## Body :
+- email [your-login]
+- password [your-password]
+- Reponse: You should receive logout message
+
+# Details
+
+- API Endpoint: http://localhost:8000/api/details
+- HTTP Method: GET
+Headers:
+- Accept: application/json
+- Authorization: Bearer [login-token]
+- Response: You should receive your details
+
+# Transaksi
+
+- API Endpoint: http://localhost:8000/api/transaksi
+- HTTP Method: POST
+- Headers: Accept: application/json
+## Body :
+- pinjaman [jumlah-pinjaman]
+- bunga [jumlah-bunga]
+- jumlah angsuran [jumlah-angsuran]
+- Response: You should receive your details
+
+
 # METHOD POST 
 
 - API/LOGIN
